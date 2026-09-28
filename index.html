@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ciudad Sostenible</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #eef7ee;
+            color: #243524;
+        }
+
+        header {
+            background: #3d8b40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        .pantalla {
+            display: none;
+        }
+
+        .activa {
+            display: block;
+        }
+
+        .inicio {
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .inicio h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .inicio p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            background: #3d8b40;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #28652b;
+        }
+
+        .categorias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .categoria {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            font-size: 17px;
+        }
+
+        .categoria:hover {
+            transform: translateY(-3px);
+        }
+
+        .contenido {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .contenido h2 {
+            margin-bottom: 15px;
+        }
+
+        .contenido p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .accion {
+            background: #dff1df;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .progreso {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .numero {
+            font-size: 50px;
+            font-weight: bold;
+            color: #3d8b40;
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌱 Ciudad Sostenible</h1>
+    <p>Una acción a la vez</p>
+</header>
+
+<main>
+
+    <!-- INICIO -->
+    <section id="inicio" class="pantalla activa">
+        <div class="inicio">
+            <h2>🌎 Ciudad Sostenible</h2>
+
+            <p>
+                Aprende sobre sostenibilidad y descubre
+                pequeñas acciones que pueden ayudar a mejorar
+                nuestro entorno.
+            </p>
+
+            <button onclick="mostrar('agenda')">
+                Comenzar
+            </button>
+        </div>
+    </section>
+
+
+    <!-- AGENDA -->
+    <section id="agenda" class="pantalla">
+
+        <h2>📅 Mi agenda sostenible</h2>
+
+        <p>
+            Selecciona un tema para conocer más.
+        </p>
+
+        <div class="categorias">
+
+            <div class="categoria"
+                 onclick="mostrarTema('🌳 Áreas verdes')">
+                🌳<br>Áreas verdes
+            </div>
+
+            <div class="categoria"
+                 onclick="mostrarTema('🚌 Movilidad sostenible')">
+                🚌<br>Movilidad
+            </div>
+
+            <div class="categoria"
+                 onclick="mostrarTema('♻️ Gestión de residuos')">
+                ♻️<br>Residuos
+            </div>
+
+            <div class="categoria"
+                 onclick="mostrarTema('💧 Cuidado del agua')">
+                💧<br>Agua
+            </div>
+
+            <div class="categoria"
+                 onclick="mostrarTema('☀️ Energías renovables')">
+                ☀️<br>Energía
+            </div>
+
+            <div class="categoria"
+                 onclick="mostrarTema('🏠 Viviendas sostenibles')">
+                🏠<br>Vivienda
+            </div>
+
+            <div class="categoria"
+                 onclick="mostrarTema('🌡️ Cambio climático')">
+                🌡️<br>Clima
+            </div>
+
+            <div class="categoria"
+                 onclick="mostrarTema('🥕 Alimentación sostenible')">
+                🥕<br>Alimentación
+            </div>
+
+        </div>
+
+        <br>
+
+        <button onclick="mostrar('progreso')">
+            📊 Ver mi progreso
+        </button>
+
+    </section>
+
+
+    <!-- INFORMACIÓN -->
+    <section id="informacion" class="pantalla">
+
+        <div class="contenido">
+
+            <h2 id="tituloTema">
+                Tema
+            </h2>
+
+            <p id="descripcionTema">
+                Información
+            </p>
+
+            <div class="accion">
+
+                <h3>🌱 Acción sostenible</h3>
+
+                <p id="accionTema">
+                    Acción
+                </p>
+
+                <button onclick="completarAccion()">
+                    ¡Lo hice!
+                </button>
+
+            </div>
+
+            <button onclick="mostrar('agenda')">
+                ← Volver a la agenda
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROGRESO -->
+    <section id="progreso" class="pantalla">
+
+        <div class="progreso">
+
+            <h2>📊 Mi progreso</h2>
+
+            <p>
+                Acciones sostenibles completadas:
+            </p>
+
+            <div class="numero" id="contador">
+                0
+            </div>
+
+            <p>
+                ¡Cada pequeña acción cuenta! 🌱
+            </p>
+
+            <br>
+
+            <button onclick="mostrar('agenda')">
+                ← Volver
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+    // Contador de acciones
+    let accionesCompletadas = 0;
+
+
+    // Cambiar de pantalla
+    function mostrar(id) {
+
+        let pantallas =
+            document.querySelectorAll(".pantalla");
+
+        pantallas.forEach(function(pantalla) {
+            pantalla.classList.remove("activa");
+        });
+
+        document.getElementById(id)
+            .classList.add("activa");
+    }
+
+
+    // Información de los temas
+    function mostrarTema(tema) {
+
+        let descripcion = "";
+        let accion = "";
+
+        if (tema === "🌳 Áreas verdes") {
+
+            descripcion =
+            "Las áreas verdes ayudan a mejorar la calidad del aire, " +
+            "reducir el calor y proporcionar espacios para las personas.";
+
+            accion =
+            "Cuida los parques y plantas de tu comunidad.";
+
+        }
+
+        else if (tema === "🚌 Movilidad sostenible") {
+
+            descripcion =
+            "La movilidad sostenible busca reducir el impacto " +
+            "ambiental del transporte.";
+
+            accion =
+            "Si tu recorrido es corto, intenta caminar o utilizar bicicleta.";
+
+        }
+
+        else if (tema === "♻️ Gestión de residuos") {
+
+            descripcion =
+            "Separar y reducir los residuos ayuda a disminuir " +
+            "la contaminación y facilita el reciclaje.";
+
+            accion =
+            "Separa correctamente los residuos de tu casa.";
+
+        }
+
+        else if (tema === "💧 Cuidado del agua") {
+
+            descripcion =
+            "El agua es un recurso indispensable y debe utilizarse " +
+            "de manera responsable.";
+
+            accion =
+            "Cierra la llave mientras te cepillas los dientes.";
+
+        }
+
+        else if (tema === "☀️ Energías renovables") {
+
+            descripcion =
+            "Las energías renovables aprovechan recursos naturales " +
+            "como el sol y el viento.";
+
+            accion =
+            "Apaga las luces que no estés utilizando.";
+
+        }
+
+        else if (tema === "🏠 Viviendas sostenibles") {
+
+            descripcion =
+            "Una vivienda sostenible busca utilizar menos recursos " +
+            "y aprovechar mejor la energía y el agua.";
+
+            accion =
+            "Aprovecha la luz natural durante el día.";
+
+        }
+
+        else if (tema === "🌡️ Cambio climático") {
+
+            descripcion =
+            "Las actividades humanas pueden contribuir al cambio " +
+            "climático mediante emisiones de gases de efecto invernadero.";
+
+            accion =
+            "Reduce el uso innecesario del automóvil cuando tengas otras opciones.";
+
+        }
+
+        else if (tema === "🥕 Alimentación sostenible") {
+
+            descripcion =
+            "La alimentación sostenible busca reducir el desperdicio " +
+            "y fomentar un consumo responsable.";
+
+            accion =
+            "Evita desperdiciar alimentos y aprovecha las sobras.";
+
+        }
+
+
+        document.getElementById("tituloTema")
+            .textContent = tema;
+
+        document.getElementById("descripcionTema")
+            .textContent = descripcion;
+
+        document.getElementById("accionTema")
+            .textContent = accion;
+
+        mostrar("informacion");
+    }
+
+
+    // Completar una acción
+    function completarAccion() {
+
+        accionesCompletadas++;
+
+        document.getElementById("contador")
+            .textContent = accionesCompletadas;
+
+        alert("¡Muy bien! 🌱 Acción registrada.");
+
+    }
+
+</script>
+
+</body>
+</html>
